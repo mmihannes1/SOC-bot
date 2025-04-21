@@ -1,5 +1,6 @@
 import argparse
 import log_parser
+import rule_engine
 
 
 def main():
@@ -13,15 +14,18 @@ def main():
 
     if args.dns:
         print(f"Parsing log file: {args.dns}")
-
         dns_log = log_parser.parse_dns_log(args.dns)
-
         print(dns_log)
 
     if args.http:
         print(f"Parsing log file: {args.http}")
         http_log = log_parser.parse_http_log(args.http)
-        print(http_log)
+        rule = rule_engine.load_rule("rules/http/exfiltration_over_http.json")
+        matches = rule_engine.apply_rule(http_log, rule)
+        print(f"Matches: {matches}")
+
+        # print(http_log)
+
     if args.conn:
         print(f"Parsing log file: {args.conn}")
         conn_log = log_parser.parse_conn_log(args.conn)

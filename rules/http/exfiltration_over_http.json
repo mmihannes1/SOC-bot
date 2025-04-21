@@ -1,0 +1,23 @@
+{
+    "name": "Exfiltration over HTTP",
+    "mitre_id": "T1041",
+    "log_type": "http",
+    "conditions":[
+        {
+            "field": "method", "equals": "POST"
+        },
+        {
+            "field":"resp_bytes", "greater_than": 0
+        }
+    ],
+    "desciption": "Large HTTP POST - possible data exfiltration",
+    "severity": "high",
+    "tags": [
+        "exfiltration",
+        "http",
+        "post"
+    ],
+    "tactic": "exfiltration",
+    "technique": "exfiltration over http"
+
+}
