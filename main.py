@@ -24,7 +24,7 @@ def main():
         matches = rule_engine.apply_rule(http_log, rule)
         print(f"Matches: {matches}")
 
-        # print(http_log)
+        print(f"http_log: {http_log}")
 
     if args.conn:
         print(f"Parsing log file: {args.conn}")

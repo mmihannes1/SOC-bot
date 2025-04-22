@@ -10,6 +10,7 @@ def match_rule(entry, rule):
     for cond in rule.get("conditions", []):
         field = cond["field"]
         value = entry.get(field)
+
         if "equals" in cond:
             if value != cond["equals"]:
                 return False
